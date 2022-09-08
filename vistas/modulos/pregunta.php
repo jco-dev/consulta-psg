@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Haz una pregunta <small></small></h1>
+                    <h1 class="m-0">Formular una pregunta <small></small></h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -20,21 +20,24 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
-                        <form action="/guardar-consulta" method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="titulo">Título</label>
-                                    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo de la pregunta" required />
+                                    <input type="text" class="form-control" id="titulo" name="titulo"
+                                        placeholder="titulo de la pregunta" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
                                     <textarea name="descripcion" id="descripcion" rows="5" class="form-control" required></textarea>
                                 </div>
+                                        
                                 <div class="form-group">
                                     <label for="exampleInputFile">Cargar Imagen o captura</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="foto" name="foto" required />
+                                            <input type="file" class="custom-file-input" id="foto" name="foto"
+                                                required />
                                             <label class="custom-file-label" for="foto">seleccione la foto</label>
                                         </div>
                                     </div>
@@ -47,6 +50,10 @@
                                     Guardar
                                 </button>
                             </div>
+                            <?php
+                                $crearPregunta = new ControladorPregunta();
+                                $crearPregunta->ctrCrearPregunta();
+                            ?>
                         </form>
                     </div>
                 </div>
