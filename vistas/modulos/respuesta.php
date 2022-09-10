@@ -60,44 +60,43 @@ $id_pregunta = $ruta[1];
                                     $item = 'id_pregunta';
                                     $valor = $id_pregunta;
                                     $respuesta = ControladorRespuesta::ctrMostrarRespuestas($tabla, $item, $valor);
-                                    if ($respuesta) {
-                                        echo '<h3>' . count($respuesta) . ' Respuestas</h3>';
-                                        echo '<div class="post clearfix">
-                                            <!-- /.user-block -->
-                                            <p>
-                                                Lorem ipsum represents a long-held tradition for designers, typographers and
-                                                the like. Some people hate it and argue for its demise, but others ignore
-                                                the hate as they create awesome tools to help create filler text for
-                                                everyone from bacon lovers to Charlie
-                                                Sheen fans.
-                                            </p>
-                
-                                            <div class="border float-right ml-5 p-1  mb-2">
-                                                <img class="img-fluid pad" src="./img/user.png" alt="respuesta">
-    
-                                            </div>
-                
-                                            <div class="row d-flex justify-content-end">
-                                                <div class="col-md-7">
-                                                    <p class="float-left ml-2">
-                                                        <a href="# " class="link-black text-primary">
-                                                        <i class="fa fa-thumbs-up mr-1"></i> </a>
-                                                        10 Like
-                                                    </p>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="user-block">
-                                                        <img class="img-circle img-bordered-sm" src="<?= BASE_URL?>/vistas/dist/images/user.png" alt="User Image" />
-                                                        <span class="username">
-                                                            <small class="text-sm text-muted">Respondido el 12/15/2022
-                                                                por:</small>
-                                                            <p>Rosa Mela</p>
-                                                        </span>
 
+                                    if ($respuesta) {
+                                        echo '<h3>' . count($respuesta) . ' Respuestas</h3><hr>';
+                                        foreach ($respuesta as  $value) { ?>
+                                            <div class="post clearfix">
+                                                <!-- /.user-block -->
+                                                <p>
+                                                    <?= $value['descripcion_respuesta'] ?>
+                                                </p>
+
+                                                <div class="border float-right ml-5 p-1  mb-2">
+                                                    <?php if ($value['foto_respuesta'] !=  NULL) { ?>
+                                                        <img class="img-fluid pad" src="<?= BASE_URL . $value['foto_respuesta'] ?>" alt="respuesta">
+                                                    <?php } ?>
+                                                </div>
+
+                                                <div class="row d-flex justify-content-end">
+                                                    <div class="col-md-6">
+                                                        <!-- <p class="float-left ml-2">
+                                                            <a href="# " class="link-black text-primary">
+                                                                <i class="fa fa-thumbs-up mr-1"></i> </a>
+                                                            10 Like
+                                                        </p> -->
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="user-block">
+                                                            <img class="img-circle img-bordered-sm" src="<?= BASE_URL.'/vistas/dist/images/user.png' ?>" alt="User Image" />
+                                                            <span class="username">
+                                                                <small class="text-sm text-muted">Respondido el <?= $value['fecha']; ?> por:</small>
+                                                                <p>juanca</p>
+                                                            </span>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>';
+                                    <?php  }
                                     } else {
                                         echo '<h3>0 Respuestas</h3>';
                                     }
@@ -108,27 +107,32 @@ $id_pregunta = $ruta[1];
                                             <h3 class="card-title">Tu respuesta</h3>
                                         </div>
                                         <!-- /.card-header -->
-
-                                        <div class="card-body">
-                                            <h5>Escribe tu respuesta:</h5>
-                                            <div class="form-group">
-                                                <input type="hidden" name="id_pregunta" id="id_pregunta" value="<?= $id_pregunta ?>">
-                                                <textarea id="Comentario-textarea" class="form-control" style="height: 200px"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="btn btn-default btn-file">
-                                                    <i class="fas fa-paperclip"></i> Subir una captura de la respuesta
-                                                    <input type="file" name="attachment" accept="image/png, image/jpg, image/jpeg" />
+                                        <form method="POST" enctype="multipart/form-data">
+                                            <div class="card-body">
+                                                <h5>Escribe tu respuesta:</h5>
+                                                <div class="form-group">
+                                                    <input type="hidden" name="id_pregunta" id="id_pregunta" value="<?= $id_pregunta ?>">
+                                                    <textarea name="descripcion_respuesta" id="descripcion_respuesta" class="form-control" rows="5" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="btn btn-default btn-file">
+                                                        <i class="fas fa-paperclip"></i> Subir una captura de la respuesta
+                                                        <input type="file" name="foto" id="foto" accept="image/png, image/jpg, image/jpeg" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- /.card-body -->
-                                        <div class="card-footer">
-                                            <div class="float-right">
-                                                <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Publicar tu respuesta</button>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                                <div class="float-right">
+                                                    <button type="submit" class="btn btn-primary"> Publicar tu respuesta</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- /.card-footer -->
+                                            <!-- /.card-footer -->
+                                            <?php
+                                            $crearRespuesta = new ControladorRespuesta();
+                                            $crearRespuesta->ctrCrearRespuesta();
+                                            ?>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +162,7 @@ $id_pregunta = $ruta[1];
                                 ?>
                                     <li class="nav-item active">
                                         <a href="<?= $url ?>" class="nav-link">
-                                            <i class="fas fa-inbox"></i> <?= $respuesta[$i]['titulo'] ?>
+                                            <?= $respuesta[$i]['titulo'] ?>
                                         </a>
                                     </li>
                                 <?php

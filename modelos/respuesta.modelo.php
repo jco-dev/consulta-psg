@@ -12,12 +12,26 @@ class ModeloRespuesta
             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
             $stmt->bindParam(":".$item,$valor,PDO::PARAM_STR);
             $stmt->execute();
-            return $stmt->fetch();
+            return $stmt->fetchAll();
         }else{
             $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
             $stmt->execute();
             return $stmt->fetchAll();
         }
+        $stmt = null;
+    }
+
+    static public function mdlCrearRespuesta($tabla, $datos)
+    {
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(descripcion_respuesta, id_pregunta, fecha, foto_respuesta) VALUES (:descripcion_respuesta, :id_pregunta, :fecha, :foto_respuesta)");
+        $stmt->bindParam(":descripcion_respuesta", $datos['descripcion_respuesta'], PDO::PARAM_STR);
+        $stmt->bindParam(":id_pregunta", $datos['id_pregunta'], PDO::PARAM_INT);
+        $stmt->bindParam(":fecha", $datos['fecha'], PDO::PARAM_STR);
+        $stmt->bindParam(":foto_respuesta", $datos['foto_respuesta'], PDO::PARAM_STR);
+        if($stmt->execute())
+            return "ok";
+        else
+            return "error";
         $stmt = null;
     }
 
