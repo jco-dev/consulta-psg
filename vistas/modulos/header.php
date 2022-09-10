@@ -13,10 +13,13 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="<?= BASE_URL?>/preguntas" class="nav-link">Inicio</a>
+                    <a href="<?= BASE_URL?>preguntas" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a href="index3.html" class="nav-link">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index3.html" class="nav-link">Usuarios</a>
                 </li>
             </ul>
 

@@ -38,7 +38,7 @@ class ControladorRespuesta {
                     'fecha'       => date('Y-m-d H:i:s'),
                     'foto_respuesta' => $ruta,
                 );
-
+                
                 $respuesta = ModeloRespuesta::mdlCrearRespuesta($tabla, $datos);
                 if($respuesta == "ok")
                 {
@@ -52,7 +52,7 @@ class ControladorRespuesta {
                         confirmButtonText: "Ok"
                       }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = "pregunta/'.$_POST['id_pregunta'].'";
+                            window.location = "'.BASE_URL.'respuesta/'.$_POST['id_pregunta'].'/";
                         }
                       })
                     </script>';
@@ -67,7 +67,7 @@ class ControladorRespuesta {
                         confirmButtonText: "Ok"
                       }).then((result) => {
                         if (result.isConfirmed) {
-                            location.reload();
+                            window.location = "'.BASE_URL.'respuesta/'.$_POST['id_pregunta'].'/";
                         }
                       })
                     </script>';
@@ -84,7 +84,7 @@ class ControladorRespuesta {
                     confirmButtonText: "Ok"
                   }).then((result) => {
                     if (result.isConfirmed) {
-                       location.reload();
+                        window.location = "'.BASE_URL.'respuesta/'.$_POST['id_pregunta'].'/";
                     }
                   })
                 </script>';
