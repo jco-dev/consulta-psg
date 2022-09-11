@@ -33,7 +33,7 @@ class ModeloUsuario
     static public function mdlRegistrarPersona($tabla, $persona)
     {
         // return insert last id
-        $dbh = new PDO('mysql:host=localhost;dbname=con', 'root', '');
+        $dbh = Conexion::conectar();
 
         $stmt = $dbh->prepare("INSERT INTO $tabla (nombre, paterno, materno) VALUES (:nombre, :paterno, :materno)");
         $stmt->bindParam(":nombre", $persona['nombre'], PDO::PARAM_STR);
