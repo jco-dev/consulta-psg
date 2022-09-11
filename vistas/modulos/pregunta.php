@@ -45,10 +45,14 @@
                             </div>
 
                             <div class="card-footer">
+                                <?php
+                                    if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {
+                                ?>
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-save"></i>
                                     Guardar
                                 </button>
+                                <?php } ?>
                             </div>
                             <?php
                                 $crearPregunta = new ControladorPregunta();

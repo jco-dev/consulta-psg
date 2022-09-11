@@ -16,10 +16,10 @@
                     <a href="<?= BASE_URL ?>preguntas" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="perfil" class="nav-link">Perfil</a>
+                    <a href="<?= BASE_URL?>perfil" class="nav-link">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="admin" class="nav-link">Usuarios</a>
+                    <a href="<?= BASE_URL?>admin" class="nav-link">Usuarios</a>
                 </li>
             </ul>
 
@@ -45,7 +45,7 @@
                 <a href="<?= BASE_URL . 'login' ?>" class="btn btn-outline-primary btn-sm">
                     Iniciar sesión
                 </a>
-                <button class="btn btn-primary btn-sm ml-1">Regístrate</button>
+                <a href="<?= BASE_URL . 'registro' ?>" class="btn btn-primary btn-sm ml-1">Regístrate</a>
             <?php
             }
             if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {

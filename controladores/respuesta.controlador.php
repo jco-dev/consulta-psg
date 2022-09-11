@@ -37,6 +37,7 @@ class ControladorRespuesta {
                     "id_pregunta" => $_POST['id_pregunta'],
                     'fecha'       => date('Y-m-d H:i:s'),
                     'foto_respuesta' => $ruta,
+                    'id_usuario'  => $_SESSION['id']
                 );
                 
                 $respuesta = ModeloRespuesta::mdlCrearRespuesta($tabla, $datos);

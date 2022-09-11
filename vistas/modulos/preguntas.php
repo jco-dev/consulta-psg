@@ -17,59 +17,67 @@
 
     <div class="content">
         <div class="container">
-        <div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body">
-                <div class="tab-content">
-                    <div class="active tab-pane" id="activity ">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity ">
 
-                        <?php
-                            $item = null;
-                            $valor = null;
-                            $tabla = "pregunta";
-                            $respuesta = ControladorPregunta::ctrMostrarPreguntas($tabla,$item,$valor);
-                           foreach($respuesta as $value)
-                           {
-                                $date = new DateTime($value['fecha']);
-                                $url = BASE_URL . 'respuesta/' . $value['id_pregunta'] . '/';
-                                echo '<div class="post clearfix">
+                                    <?php
+                                    $item = null;
+                                    $valor = null;
+                                    $tabla = "pregunta";
+                                    $respuesta = ControladorPregunta::ctrMostrarPreguntas($tabla, $item, $valor);
+                                    foreach ($respuesta as $value) {
+                                        $date = new DateTime($value['fecha']);
+                                        $url = BASE_URL . 'respuesta/' . $value['id_pregunta'] . '/';
+                                        echo '<div class="post clearfix">
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="'.BASE_URL.'vistas/dist/images/user.png" alt="Imagen de usuario">
+                                    <img class="img-circle img-bordered-sm" src="' . BASE_URL . 'vistas/dist/images/user.png" alt="Imagen de usuario">
                                     <span class="username">
-                                        <a href="'.$url.'"">'.$value['titulo'].'</a>
+                                        <a href="' . $url . '"">' . $value['titulo'] . '</a>
                                         <p>juanca</p>
                                     </span>
-                                    <span class="description">Compartido públicamente - '.$date->format('d/m/Y H:i A').'</span>
+                                    <span class="description">Compartido públicamente - ' . $date->format('d/m/Y H:i A') . '</span>
                                 </div>
                                 <!-- /.user-block -->
                                 <p>
-                                    '.$value['descripcion'].'
+                                    ' . $value['descripcion'] . '
                                 </p>
 
                             </div>';
-                           }
-                        ?>
-                        
+                                    }
+                                    ?>
+
+                                </div>
+
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
                     </div>
-
+                    <!-- /.card -->
                 </div>
-                <!-- /.tab-content -->
-            </div>
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.col-md-6 -->
-    <div class="col-lg-4">
+                <!-- /.col-md-6 -->
+                <div class="col-lg-4">
 
-        <div class="card">
-            <div class="card-body">
-                <a class="btn btn-primary btn-block" href="<?= BASE_URL . 'pregunta'?>">
-                    Preguntar
-                </a>
-            </div>
-        </div>
-        <!-- <div class="card">
+                    <div class="card">
+                        <div class="card-body">
+                            <?php
+                            if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {
+                            ?>
+                                <a class="btn btn-primary btn-block" href="<?= BASE_URL . 'pregunta' ?>">
+                                    Preguntar
+                                </a>
+
+                            <?php } else { ?>
+                                <a class="btn btn-primary btn-block" href="<?= BASE_URL . 'login' ?>">
+                                    Regístrese o inicie sesión para preguntar
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
             <div class="card-body login-card-body">
                 <fieldset >
                     <p class="login-box-msg">Iniciar Sesion</p>
@@ -107,9 +115,9 @@
 
 
 
-    </div>
-    <!-- /.col-md-6 -->
-</div>
+                </div>
+                <!-- /.col-md-6 -->
+            </div>
         </div>
     </div>
 </div>

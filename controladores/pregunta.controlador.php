@@ -32,6 +32,7 @@ class ControladorPregunta {
                                 "titulo"        => $_POST['titulo'],
                                 "descripcion"   => $_POST['descripcion'],
                                 "foto_pregunta" => $archivo,
+                                "id_usuario"    => $_SESSION['id']
                             );
 
                             $respuesta = ModeloPregunta::mdlCrearPregunta($tabla,$datos);

@@ -23,11 +23,12 @@ class ModeloRespuesta
 
     static public function mdlCrearRespuesta($tabla, $datos)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(descripcion_respuesta, id_pregunta, fecha, foto_respuesta) VALUES (:descripcion_respuesta, :id_pregunta, :fecha, :foto_respuesta)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(descripcion_respuesta, id_pregunta, fecha, foto_respuesta, id_usuario) VALUES (:descripcion_respuesta, :id_pregunta, :fecha, :foto_respuesta, :id_usuario)");
         $stmt->bindParam(":descripcion_respuesta", $datos['descripcion_respuesta'], PDO::PARAM_STR);
         $stmt->bindParam(":id_pregunta", $datos['id_pregunta'], PDO::PARAM_INT);
         $stmt->bindParam(":fecha", $datos['fecha'], PDO::PARAM_STR);
         $stmt->bindParam(":foto_respuesta", $datos['foto_respuesta'], PDO::PARAM_STR);
+        $stmt->bindParam(":id_usuario", $datos['id_usuario'], PDO::PARAM_INT);
         if($stmt->execute())
             return "ok";
         else

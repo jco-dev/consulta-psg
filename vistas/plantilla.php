@@ -24,17 +24,24 @@ require_once 'config/config.php';
 <?php
 if (isset($_GET['ruta'])){
   $vista = explode('/', $_GET['ruta']);
+  if($vista[0] == 'login'){
+   $clase = 'login-page';
+  }
+  if($vista[0] == 'registro')
+  {
+    $clase = 'register-page';
+  }
 }else{
-
+  $clase = '';
 }
 ?>
 
-<body class="hold-transition layout-top-nav <?= $vista[0] == "login" ? 'login-page' : '' ?>">
+<body class="hold-transition layout-top-nav <?= $clase ?>">
 
   <?php
   if (isset($_GET['ruta'])) {
     $vista = explode('/', $_GET['ruta']);
-    if ($vista[0] != "login") {
+    if ($vista[0] != "login" && $vista[0] != "registro") {
 
       echo '<div class="wrapper">';
       include "modulos/header.php";
@@ -47,7 +54,8 @@ if (isset($_GET['ruta'])){
       $vista[0] == "perfil" ||
       $vista[0] == "admin" ||
       $vista[0] == "login" ||
-      $vista[0] == "salir" 
+      $vista[0] == "salir" ||
+      $vista[0] == "registro"
     ) {
       include "modulos/" . $vista[0] . ".php";
     } else {
@@ -57,7 +65,7 @@ if (isset($_GET['ruta'])){
     include 'modulos/preguntas.php';
   }
 
-  if ($vista[0] != "login") {
+  if ($vista[0] != "login" && $vista[0] != "registro") {
     include "modulos/footer.php";
     echo ' </div>';
   }
