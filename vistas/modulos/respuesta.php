@@ -84,7 +84,7 @@ $id_pregunta = $ruta[1];
                                                             10 Like
                                                         </p> -->
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <div class="user-block">
                                                             <img class="img-circle img-bordered-sm" src="<?= BASE_URL.'/vistas/dist/images/user.png' ?>" alt="User Image" />
                                                             <span class="username">
@@ -134,6 +134,7 @@ $id_pregunta = $ruta[1];
                                             ?>
                                         </form>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
