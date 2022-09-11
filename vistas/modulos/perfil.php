@@ -1,6 +1,6 @@
 <?php
 $item = "id_usuario";
-$valor = 1;
+$valor = $_SESSION["id"];
 $usuario = ControladorUsuario::ctrMostrarUsuarios("id_persona", $valor);
 $nroPreguntas = ControladorUsuario::ctrMostrarPreguntas("pregunta", "id_pregunta", "id_usuario", $valor);
 $nroRespuestas = ControladorUsuario::ctrMostrarPreguntas("respuesta", "id_respuesta", "id_usuario", $valor);
