@@ -65,7 +65,7 @@
         <div class="card">
             <div class="card-body">
                 <a class="btn btn-primary btn-block" href="<?= BASE_URL . 'pregunta'?>">
-                    Preguntar
+                    Formular Pregunta
                 </a>
             </div>
         </div>
