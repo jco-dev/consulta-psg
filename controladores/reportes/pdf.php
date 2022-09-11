@@ -1,5 +1,3 @@
-
-
 <?php
 
 $ruta = dirname(__DIR__);

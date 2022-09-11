@@ -34,7 +34,10 @@
                 $vista[0] == "respuesta" ||
                 $vista[0] == "perfil" ||
                 $vista[0] == "admin"||
-                $vista[0] == "pdf"
+                $vista[0] == "pdf"||
+                $vista[0] == "editarUsuario"||
+                $vista[0] == "crearUsuario" ||
+                $vista[0] == "eliminarUsuario" 
                 ) 
             {
               include "modulos/".$vista[0].".php";

@@ -11,7 +11,7 @@ class Validation
                 $ruleName = $rule[0];
                 $ruleValue = $rule[1] ?? null;
                 $value = $data[$key] ?? null;
-                $error = self::$ruleName($key, $value, $ruleValue);
+                $error = self::$ruleName($key, $value, $ruleValue, $data);
                 if ($error) {
                     $errors[$key] = $error;
                 }
@@ -22,25 +22,25 @@ class Validation
     public static function required($key, $value)
     {
         if (empty($value)) {
-            return "El campo $key es requerido";
+            return "<p class='text-danger'>El campo $key es requerido</p>";
         }
     }
     public static function email($key, $value)
     {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            return "El campo $key debe ser un email";
+            return "<p class='text-danger'>El campo $key debe ser un email</p>";
         }
     }
     public static function min($key, $value, $min)
     {
         if (strlen($value) < $min) {
-            return "El campo $key debe tener al menos $min caracteres";
+            return "<p class='text-danger'>El campo $key debe tener al menos $min caracteres</p>";
         }
     }
     public static function max($key, $value, $max)
     {
         if (strlen($value) > $max) {
-            return "El campo $key debe tener como máximo $max caracteres";
+            return "<p class='text-danger'>El campo $key debe tener como máximo $max caracteres</p>";
         }
     }
     public static function unique($key, $value, $table)
@@ -50,7 +50,7 @@ class Validation
         $result->execute();
         $result = $result->fetch();
         if ($result) {
-            return "El campo $key ya existe";
+            return "<p class='text-danger'>El $key <b>'$value'</b> ya se Encuentra Registrado.</p>";
         }
     }
     public static function exists($key, $value, $table)
@@ -60,13 +60,20 @@ class Validation
         $result->execute();
         $result = $result->fetch();
         if (!$result) {
-            return "El campo $key no existe";
+            return "<p class='text-danger'>El campo $key no existe</p>";
         }
     }
     public static function password($key, $value)
     {
         if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $value)) {
-            return "El campo $key debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número";
+            return "<p class='text-danger'>El campo $key debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número</p>";
+        }
+    }
+    public static function passwordConfirm($key, $value, $password,$data)
+    {
+        if ($value != $data[$password]) {
+            
+            return "<p class='text-danger'>La Contraseña no coincide con la Confirmacion de Contraseña</p>";
         }
     }
 }
