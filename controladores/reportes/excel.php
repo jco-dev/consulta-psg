@@ -27,14 +27,17 @@ if (isset($_POST["excel"])) {
     $spreadsheet->setActiveSheetIndex(0);
     $spreadsheet->getActiveSheet()->setTitle('REPORTE');
 
-    $spreadsheet->getActiveSheet()->mergeCells("A2:E2")->setCellValue("A2", htmlspecialchars("REPORTE DE USUARIOS"));
+    $spreadsheet->getActiveSheet()->mergeCells("A2:E2")->setCellValue("A2", htmlspecialchars("REPORTE DE USUARIOS MiNI STACKOVERFLOW"));
     $spreadsheet->getActiveSheet()->mergeCells("A3:E3")->setCellValue("A3", htmlspecialchars("CURSOS POSGRADO"));
 
     $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(5);
     $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(15);
     $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(15);
     $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(18);
-    $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(40);
+    $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(15);
+    $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+
 
 
     $contador = 5;
@@ -44,6 +47,9 @@ if (isset($_POST["excel"])) {
     $spreadsheet->getActiveSheet()->setCellValue("C" . $contador, 'PATERNO');
     $spreadsheet->getActiveSheet()->setCellValue("D" . $contador, 'MATERNO');
     $spreadsheet->getActiveSheet()->setCellValue("E" . $contador, 'CORREO');
+    $spreadsheet->getActiveSheet()->setCellValue("F" . $contador, 'TIPO USUARIO');
+    $spreadsheet->getActiveSheet()->setCellValue("G" . $contador, 'ESTADO');
+
 
 
     $indice = 1;
@@ -54,6 +60,9 @@ if (isset($_POST["excel"])) {
         $spreadsheet->getActiveSheet()->setCellValue("C" . $contador,  $usuario["paterno"]);
         $spreadsheet->getActiveSheet()->setCellValue("D" . $contador, $usuario["materno"]);
         $spreadsheet->getActiveSheet()->setCellValue("E" . $contador,  $usuario["usuario"]);
+        $spreadsheet->getActiveSheet()->setCellValue("F" . $contador,  $usuario["rol"]);
+        $spreadsheet->getActiveSheet()->setCellValue("G" . $contador,  $usuario["estado"]);
+
 
         $indice++;
         $contador++;
