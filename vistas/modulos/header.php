@@ -13,7 +13,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="<?= BASE_URL?>preguntas" class="nav-link">Inicio</a>
+                    <a href="<?= BASE_URL ?>preguntas" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a href="perfil" class="nav-link">Perfil</a>
@@ -39,10 +39,27 @@
         <!-- Right navbar links -->
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
             <li class="nav-item dropdown"></li>
-            <button class="btn btn-outline-primary btn-sm">
-                Iniciar sesión
-            </button>
-            <button class="btn btn-primary btn-sm ml-1">Regístrate</button>
+            <?php
+            if (!isset($_SESSION['iniciarSesion'])) {
+            ?>
+                <a href="<?= BASE_URL . 'login' ?>" class="btn btn-outline-primary btn-sm">
+                    Iniciar sesión
+                </a>
+                <button class="btn btn-primary btn-sm ml-1">Regístrate</button>
+            <?php
+            }
+            if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == 'ok') {
+            ?>
+                <div class="image">
+                    <img src="<?= BASE_URL . 'vistas/dist/images/user.png' ?>" class="img-circle" width="30" alt="Imagen de usuario">
+                </div>
+                <?= '  ' . $_SESSION['nombre'] . ' ' . $_SESSION['paterno'] ?>
+                <a href="<?= BASE_URL . 'salir' ?>" class="btn btn-outline-danger ml-1 btn-sm">
+                    salir
+                </a>
+
+            <?php } ?>
+
         </ul>
     </div>
 </nav>

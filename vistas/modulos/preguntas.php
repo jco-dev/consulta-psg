@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?= BASE_URL . 'preguntas' ?>">Inicio</a></li>
                         <li class="breadcrumb-item">Preguntas</li>
                     </ol>
                 </div>
@@ -69,7 +69,7 @@
                 </a>
             </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-body login-card-body">
                 <fieldset >
                     <p class="login-box-msg">Iniciar Sesion</p>
@@ -102,7 +102,7 @@
                     </form>
                 </fieldset>
             </div>
-        </div>
+        </div> -->
 
 
 

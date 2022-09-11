@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?= BASE_URL . 'preguntas' ?>">Inicio</a></li>
                         <li class="breadcrumb-item">Página no encontrada</li>
                     </ol>
                 </div>
@@ -25,7 +25,7 @@
                         Ooops! página no encontrada.
                     </h3>
                     <p>
-                        Regresar al inicio <a href="preguntas">Click aquí.</a>
+                        Regresar al inicio <a href="<?= BASE_URL . 'preguntas' ?>">Click aquí.</a>
                     </p>
                 </div>
             </div>
