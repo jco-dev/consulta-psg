@@ -33,7 +33,8 @@
                 $vista[0] == "pregunta" ||
                 $vista[0] == "respuesta" ||
                 $vista[0] == "perfil" ||
-                $vista[0] == "admin"
+                $vista[0] == "admin"||
+                $vista[0] == "pdf"
                 ) 
             {
               include "modulos/".$vista[0].".php";

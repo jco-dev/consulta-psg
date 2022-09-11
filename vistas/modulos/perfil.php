@@ -1,3 +1,16 @@
+<?php
+$item = "id_usuario";
+$valor = 1;
+$usuario = ControladorUsuario::ctrMostrarUsuarios("id_persona", $valor);
+$nroPreguntas = ControladorUsuario::ctrMostrarPreguntas("pregunta", "id_pregunta", "id_usuario", $valor);
+$nroRespuestas = ControladorUsuario::ctrMostrarPreguntas("respuesta", "id_respuesta", "id_usuario", $valor);
+
+
+$preguntas = ControladorPregunta::ctrMostrarPreguntasUsuario( $valor);
+
+
+?>
+
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container">
@@ -27,23 +40,21 @@
                             <img class="profile-user-img img-fluid img-circle" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center">Nina Mcintire</h3>
+                        <h3 class="profile-username text-center"><?= $usuario["nombre"] . " " . $usuario["paterno"] ?></h3>
 
-                        <p class="text-muted text-center">Software Engineer</p>
+                        <p class="text-muted text-center"><?= $usuario["usuario"] ?></p>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Followers</b> <a class="float-right">1,322</a>
+                                <b>Preguntas</b> <a class="float-right"><?= $nroPreguntas ?></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Following</b> <a class="float-right">543</a>
+                                <b>Respuestas</b> <a class="float-right"><?= $nroRespuestas ?></a>
                             </li>
-                            <li class="list-group-item">
-                                <b>Friends</b> <a class="float-right">13,287</a>
-                            </li>
+
                         </ul>
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -54,85 +65,49 @@
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header p-2">
+                    <div class=" p-2 d-flex justify-content-between">
 
                         <h2>Preguntas Posteadas</h2>
-                    </div><!-- /.card-header -->
+                        <a href="<?= BASE_URL ?>/pregunta" class="btn btn-primary ">Formular Pregunta</a>
+                    </div>
+                    <hr>
                     <div class="card-body">
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="user image">
-                                <span class="username">
-                                    <a href="#">Titulo de pregunta.</a>
-                                </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
+
+
+                        <?php foreach ($preguntas as $pregunta) : ?>
+                            <div class="post">
+                                <div class="user-block">
+                                    <img class="img-circle img-bordered-sm" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="user image">
+                                    <span class="username">
+                                        <a href="<?=BASE_URL."respuesta/".$pregunta["id_pregunta"]?>"><?= $pregunta["titulo"]?></a>
+                                    </span>
+                                    <span class="description">Shared publicly - 7:30 PM today</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <p>
+                                    
+                                <?= substr($pregunta["descripcion"],0,100) ?>...
+
+                                </p>
+
+                                <p>
+                                    <a href="<?=BASE_URL."respuesta/".$pregunta["id_pregunta"]?>" class="link-black text-sm">
+                                        <i class="far fa-comments mr-1"></i> Respuestas (<?= $pregunta["nro_respuestas"]?>)
+                                    </a>
+
+                                </p>
+
                             </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate .
+                        <?php endforeach ?>
 
-                            </p>
+                        <?php if (empty($pregunta)) : ?>
+                            <div class="post">
 
-                            <p>
-                                <a href="#" class="link-black text-sm">
-                                    <i class="far fa-comments mr-1"></i> Respuestas (5)
-                                </a>
+                                <p>Sin Preguntas Posteadas</p>
 
-                            </p>
-
-                        </div>
-
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="user image">
-                                <span class="username">
-                                    <a href="#">Titulo de pregunta.</a>
-                                </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
                             </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate .
+                        <?php endif ?>
 
-                            </p>
-
-                            <p>
-                                <a href="#" class="link-black text-sm">
-                                    <i class="far fa-comments mr-1"></i> Respuestas (5)
-                                </a>
-
-                            </p>
-
-                        </div>
-
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="user image">
-                                <span class="username">
-                                    <a href="#">Titulo de pregunta.</a>
-                                </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate .
-
-                            </p>
-
-                            <p>
-                                <a href="#" class="link-black text-sm">
-                                    <i class="far fa-comments mr-1"></i> Respuestas (5)
-                                </a>
-
-                            </p>
-
-                        </div>
 
 
                         <!-- /.tab-content -->
