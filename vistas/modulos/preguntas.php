@@ -33,20 +33,20 @@
                                         $date = new DateTime($value['fecha']);
                                         $url = BASE_URL . 'respuesta/' . $value['id_pregunta'] . '/';
                                         echo '<div class="post clearfix">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="' . BASE_URL . 'vistas/dist/images/user.png" alt="Imagen de usuario">
-                                    <span class="username">
-                                        <a href="' . $url . '"">' . $value['titulo'] . '</a>
-                                        <p>juanca</p>
-                                    </span>
-                                    <span class="description">Compartido públicamente - ' . $date->format('d/m/Y H:i A') . '</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    ' . $value['descripcion'] . '
-                                </p>
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="' . BASE_URL . 'vistas/dist/images/user.png" alt="Imagen de usuario">
+                                                <span class="username">
+                                                    <a href="' . $url . '"">' . $value['titulo'] . '</a>
+                                                    <p>'.$value['usuario'].'</p>
+                                                </span>
+                                                <span class="description">Compartido públicamente - ' . $date->format('d/m/Y H:i A') . '</span>
+                                            </div>
+                                            <!-- /.user-block -->
+                                            <p>
+                                                ' . $value['descripcion'] . '
+                                            </p>
 
-                            </div>';
+                                        </div>';
                                     }
                                     ?>
 

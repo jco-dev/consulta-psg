@@ -9,7 +9,7 @@ class ModeloRespuesta
     {
         if($item != null)
         {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt = Conexion::conectar()->prepare("SELECT t.*, (SELECT CONCAT_WS(' ', p.nombre, p.paterno) as usuario FROM persona p WHERE p.id_persona=t.id_usuario ) as usuario FROM $tabla t WHERE $item = :$item");
             $stmt->bindParam(":".$item,$valor,PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll();

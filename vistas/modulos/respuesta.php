@@ -40,7 +40,7 @@ $id_pregunta = $ruta[1];
                                             <img class="img-circle img-bordered-sm" src="<?= BASE_URL ?>/vistas/dist/images/user.png" width="128px" alt="user image ">
                                             <span class="username">
                                                 <a href="#"><?= $respuesta['titulo'] ?></a>
-                                                <p>Willy Huanca</p>
+                                                <p><?= $respuesta['usuario']?></p>
                                             </span>
                                             <span class="description">Compartido públicamente -
                                                 <?= $date->format('d/m/y h:i A') ?> </span>
@@ -89,7 +89,7 @@ $id_pregunta = $ruta[1];
                                                             <img class="img-circle img-bordered-sm" src="<?= BASE_URL.'/vistas/dist/images/user.png' ?>" alt="User Image" />
                                                             <span class="username">
                                                                 <small class="text-sm text-muted">Respondido el <?= $value['fecha']; ?> por:</small>
-                                                                <p>juanca</p>
+                                                                <p><?= $value['usuario']?></p>
                                                             </span>
 
                                                         </div>
