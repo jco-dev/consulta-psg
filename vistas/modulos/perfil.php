@@ -1,6 +1,6 @@
 <?php
 $item = "id_usuario";
-$valor = $_SESSION["id"];
+$valor = $_SESSION["id"] ?? 0;
 $usuario = ControladorUsuario::ctrMostrarUsuarios("id_persona", $valor);
 $nroPreguntas = ControladorUsuario::ctrMostrarPreguntas("pregunta", "id_pregunta", "id_usuario", $valor);
 $nroRespuestas = ControladorUsuario::ctrMostrarPreguntas("respuesta", "id_respuesta", "id_usuario", $valor);
@@ -40,9 +40,9 @@ $preguntas = ControladorPregunta::ctrMostrarPreguntasUsuario( $valor);
                             <img class="profile-user-img img-fluid img-circle" src="<?= BASE_URL ?>/vistas/dist/images/user.png" alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center"><?= $usuario["nombre"] . " " . $usuario["paterno"] ?></h3>
+                        <h3 class="profile-username text-center"><?= ($usuario["nombre"] ?? ""). " " . ($usuario["paterno"] ?? "Inicie Sesion")?></h3>
 
-                        <p class="text-muted text-center"><?= $usuario["usuario"] ?></p>
+                        <p class="text-muted text-center"><?= $usuario["usuario"] ?? "Inicie Sesion"?></p>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
