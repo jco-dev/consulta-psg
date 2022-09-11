@@ -15,12 +15,18 @@
                 <li class="nav-item">
                     <a href="<?= BASE_URL ?>preguntas" class="nav-link">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= BASE_URL?>perfil" class="nav-link">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= BASE_URL?>admin" class="nav-link">Usuarios</a>
-                </li>
+                <?php if (isset($_SESSION["id"])) : ?>
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL ?>perfil" class="nav-link">Perfil</a>
+                    </li>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION["id"]) && $_SESSION["rol"] == "admin") : ?>
+
+                    <li class="nav-item">
+                        <a href="<?= BASE_URL ?>admin" class="nav-link">Usuarios</a>
+                    </li>
+                <?php endif; ?>
             </ul>
 
             <!-- SEARCH FORM -->

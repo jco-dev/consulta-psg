@@ -50,8 +50,8 @@ if (isset($_GET['ruta'])) {
       $vista[0] == "preguntas" ||
       $vista[0] == "pregunta" ||
       $vista[0] == "respuesta" ||
-      $vista[0] == "perfil" ||
-      $vista[0] == "admin" ||
+      ($vista[0] == "perfil" && isset($_SESSION["id"])) ||
+      ($vista[0] == "admin" && isset($_SESSION["rol"]) && $_SESSION["rol"]=="admin" ) ||
       $vista[0] == "login" ||
       $vista[0] == "salir" ||
       $vista[0] == "registro" ||
