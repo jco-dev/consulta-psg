@@ -128,4 +128,9 @@ class ControladorPregunta {
         return $respuesta;
     }
 
+    static public function ctrMostrarPreguntasUsuario($valor)
+    {
+        $respuesta = ModeloPregunta::mdlMostrarPreguntasUsuario($valor);
+        return $respuesta;
+    }
 }

@@ -22,16 +22,15 @@ require_once 'config/config.php';
 </head>
 
 <?php
-if (isset($_GET['ruta'])){
+if (isset($_GET['ruta'])) {
   $vista = explode('/', $_GET['ruta']);
-  if($vista[0] == 'login'){
-   $clase = 'login-page';
+  if ($vista[0] == 'login') {
+    $clase = 'login-page';
   }
-  if($vista[0] == 'registro')
-  {
+  if ($vista[0] == 'registro') {
     $clase = 'register-page';
   }
-}else{
+} else {
   $clase = '';
 }
 ?>
@@ -55,7 +54,11 @@ if (isset($_GET['ruta'])){
       $vista[0] == "admin" ||
       $vista[0] == "login" ||
       $vista[0] == "salir" ||
-      $vista[0] == "registro"
+      $vista[0] == "registro" ||
+      $vista[0] == "pdf" ||
+      $vista[0] == "editarUsuario" ||
+      $vista[0] == "crearUsuario" ||
+      $vista[0] == "eliminarUsuario"
     ) {
       include "modulos/" . $vista[0] . ".php";
     } else {

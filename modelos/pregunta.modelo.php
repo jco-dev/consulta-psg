@@ -35,4 +35,18 @@ class ModeloPregunta
         }
         $stmt = null;
     }
+    static public function mdlMostrarPreguntasUsuario($valor)
+    {
+
+        $subconsulta="SELECT COUNT(*) cantidad FROM respuesta WHERE respuesta.id_pregunta=pregunta.id_pregunta";
+        $consulta="SELECT *,($subconsulta) as nro_respuestas FROM pregunta WHERE id_usuario = :id_usuario";
+
+
+        $stmt = Conexion::conectar()->prepare($consulta);
+        $stmt->bindParam(":id_usuario", $valor, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+
+        $stmt = null;
+    }
 }

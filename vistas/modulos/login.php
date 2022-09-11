@@ -58,7 +58,7 @@
           </form>
 
           <p class="mb-1 mt-4 text-center">
-            <a href="#"> Olvidé mi contraseña</a>
+            <a href="<?= BASE_URL ?>preguntas"> Volver a Inicio</a>
           </p>
         </div>
       </div>
